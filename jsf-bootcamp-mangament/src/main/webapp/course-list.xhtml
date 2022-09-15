@@ -1,0 +1,57 @@
+<!DOCTYPE html > 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"> 
+
+	<ui:composition template="/main-template.xhtml">
+		<ui:define name="title">Course|Home</ui:define>
+		<ui:define name="sub-title">Course List</ui:define>
+		<ui:define name="add-link">
+			 <h:link outcome="/course-add.xhtml" value="Add" styleClass="btn btn-info col-1"/>
+			
+		</ui:define>
+		<ui:define name="contents">
+			<h:dataTable value="#{courseBean.courses}" var="c" styleClass="table" binding="#{tbl}">
+				<h:column>
+					<f:facet name="header">No</f:facet>
+					#{tbl.rowIndex + 1}
+				</h:column>
+				<h:column>
+					<f:facet name="header">Name</f:facet>
+					#{c.name}
+				</h:column>
+				<h:column>
+					<f:facet name="header">Level</f:facet>
+					#{c.level.name}
+				</h:column>
+				<h:column>
+					<f:facet name="header">Created Date</f:facet>
+					<h:outputText value="#{c.created_at}">
+						<f:convertDateTime type="localDate"/>
+					</h:outputText>
+				</h:column>
+				<h:column>
+					<f:facet name="header">Updated Date</f:facet>
+					<h:outputText value="#{c.updated_at}" p:required="required">
+						<f:convertDateTime type="localDate"/>
+					</h:outputText>
+				</h:column>
+				<h:column>
+					<f:facet name="header">Details context</f:facet>
+					#{c.content}
+				</h:column>
+				<h:column>
+					<f:facet name="header">Action</f:facet>
+					<h:link outcome = "/course-add" value = "Edit" >
+						<f:param name = "cId" value = "#{c.id}"></f:param>
+					</h:link>
+					<h:form>
+						<h:commandLink action="#{courseBean.delete(c.id)}" value=" | Remove" styleClass="text-danger" />
+					</h:form>
+					</h:column>
+			</h:dataTable>
+		</ui:define>
+	</ui:composition>
+</html>

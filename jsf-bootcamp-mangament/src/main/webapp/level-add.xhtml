@@ -1,0 +1,29 @@
+<!DOCTYPE html > 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"> 
+
+	<ui:composition template="/main-template.xhtml">
+		<ui:define name="title">Level|Add</ui:define>
+		<ui:define name="sub-title">Add Level</ui:define>
+		<ui:define name="contents">
+			<h:form styleClass="form col-5">
+				<div class="mb-3">
+					<label for="" class="form-label">Name</label>
+					<h:inputText value="#{levelBean.level.name}" styleClass="form-control"/>
+				</div>
+				<div class="mb-3">
+					<label for="" class="form-label">Fees</label>
+					<h:inputText value="#{levelBean.level.fees}" styleClass="form-control"/>
+				</div>
+				<div class="mb-3">
+					<label for="" class="form-label">Duration</label>
+					<h:inputText value="#{levelBean.level.duration}" styleClass="form-control"/>
+				</div>
+				<h:commandButton action="#{levelBean.save}" value="Save" styleClass="btn btn-info"/>
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</html>
