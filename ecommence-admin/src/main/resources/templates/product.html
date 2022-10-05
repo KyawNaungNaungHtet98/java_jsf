@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+xmlns:layout ="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{admin-template}">
+<head>
+	<title>Eshop | Product</title>
+</head>
+<body>
+	<div class="card shadow mb-4" layout:fragment="content-body">
+    <div class="card-header py-3">
+    	<div class="row">
+     <div class="col-6">
+    	<h3 class="m-0 font-weight-bold text-primary">Product Table</h3>
+    	
+    </div>
+    <div class="col-6">
+    	<a th:href="@{/productAdd}" class="btn btn-success" layout:fragment="add-link">Add</a>
+	</div>	
+    </div>
+    </div>
+    <div class="card-body">
+    	<div class="table-responsive">
+    		<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+    			<thead>
+    				<tr>
+					    <th>No</th>
+					    <th>Name</th>
+					    <th>Price</th>
+					    <th>Photo</th>
+					    <th>Category</th>
+					    <th>Created_at</th>
+    					<th>Updated_at</th>
+    					<th>Action</th>
+    				</tr>
+    			</thead>
+    		</table>
+    	</div>
+    </div>
+    </div>
+</body>
+</html>

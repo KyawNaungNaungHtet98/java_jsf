@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+xmlns:layout ="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{admin-template}">
+<head>
+	<title>Eshop | Admin</title>
+	<!-- <th:block layout:fragment="css">
+			<link rel="stylesheet" th:href="@{/app/css1/bootstrap.min.css}" />
+	</th:block> -->
+</head>
+<body>
+	
+	<div class="container" layout:fragment="content-body">
+	 	<div class="row">
+	 		<div class="col-6">
+	 			<h3>Products Detail</h3>
+	 			<a th:href="@{/product}"><img th:src="@{/app/picture/product.jfif}" alt="" />
+	 			<span>Products</span></a>
+	 		</div>
+	 		<div class="col-6">
+	 			<h3>Category Detail</h3>
+	 			<a th:href="@{/category}"><img th:src="@{/app/picture/category.jfif}" alt="" />
+	 			<span>Category</span></a>
+	 		</div>
+	 	</div>
+	 	<div class="row align-middle">
+	 		<div class="col">
+	 			<h3 class="align-middle">Orders Detail</h3>
+	 			<a href=""><img src="" alt=""  class="rounded mx-auto d-block"/>Orders</a>
+	 		</div>
+	 	</div>
+	 	
+	</div>
+	
+</body>
+</html>
