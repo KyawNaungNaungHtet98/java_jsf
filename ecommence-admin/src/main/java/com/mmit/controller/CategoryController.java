@@ -25,7 +25,8 @@ public class CategoryController {
 		return "category";
 	}
 	@GetMapping("/categoryAdd")
-	public String addCategory() {
+	public String addCategory(Model m) {
+		m.addAttribute("category",new Category());
 		return "category-add";
 	}
 
