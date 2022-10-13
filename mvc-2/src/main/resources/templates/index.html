@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th = "http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Home Page</title>
+<link rel = "stylesheet" th:href = "@{/webjars/bootstrap/css/bootstrap.min.css}"></link>
+</head>
+<body>
+	<div class = "container mt-3">
+		<div class = "row">
+			<h3 class = "col-10">
+			All Employee
+		</h3>
+		<a th:href = "@{/employees/add}" class = "btn btn-success col">Add</a>
+		</div>
+		<hr/>
+		<table class = "table">
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Salary</th>
+					<th>City</th>
+					<th>Birthday</th>
+					<th>Gender</th>
+					<th>Is Active</th>
+					<th>Action</th>
+				</tr>
+			</thead>
+			<tbody>
+			<th:block th:each="employee: ${employees}">
+				<tr>
+					<td th:text="${employee.name}">Aung Aung</td>
+					<td th:text="${employee.salary}">10000</td>
+					<td th:text="${employee.city}">Yangon</td>
+					<td th:text="${employee.birthday}">1997-09-01</td>
+					<td th:text="${employee.gender}">Male</td>
+					<td th:text="${employee.active}">Single</td>
+					<td>
+						<a th:href = "@{'/employees/' +${employee.id}}" class = "text-primary">Edit</a> |
+						<a th:href = "@{'/employees/delete/' +${employee.id}}" class = "text-danger">Delete</a>
+						
+					</td>
+				</tr>
+			</th:block>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>

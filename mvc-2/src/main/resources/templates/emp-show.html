@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th = "http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Home Page</title>
+<link rel = "stylesheet" th:href = "@{/webjars/bootstrap/css/bootstrap.min.css}"></link>
+</head>
+<body>
+	<div class = "container mt-3">
+		<table class="table w-50" th:object="${employee_obj}">
+			<tr>
+				<td>Name</td>
+				<td th:text="*{name}"></td>
+			</tr>
+			<tr>
+				<td>Salary</td>
+				<td th:text="*{salary}"></td>
+			</tr>
+			<tr>
+				<td>Birthday</td>
+				<td th:text="*{birthday}"></td>
+			</tr>
+			<tr>
+				<td>Gender</td>
+				<td th:text="*{gender}"></td>
+			</tr>
+			<tr>
+				<td>Is active</td>
+				<td th:text="*{active}? 'Yes' : 'No'"></td>
+			</tr>
+		</table>
+		
+	</div>
+</body>
+</html>
