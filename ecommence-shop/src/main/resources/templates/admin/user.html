@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+xmlns:layout ="http://www.ultraq.net.nz/thymeleaf/layout"
+xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+layout:decorate = "~{admin/admin-template}">
+<head>
+	<title>Eshop | Admin | User</title>
+</head>
+<body>
+	
+	<div class="card shadow mb-4" layout:fragment="content-body">
+    <div class="card-header py-3">
+    <div class="row">
+     <div class="col-6">
+    	<h3 class="m-0 font-weight-bold text-primary">User Table</h3>
+    	
+    </div>
+    <div class="col-4">
+    	<a th:href="@{/admin/userAdd}" class="btn btn-success" layout:fragment="add-link">Add</a>
+		<a th:href="@{/admin}" class="btn btn-success" layout:fragment="add-link">Back</a>
+	</div>	
+    </div>
+   
+    </div>
+    <div class="card-body">
+    	<div class="table-responsive">
+    		<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+    			<thead>
+    				<tr>
+					    <th>No</th>
+					    <th>Name</th>
+					    <th>Email</th>
+					   	<th>Phone</th>
+					   	<th>Address</th>
+					    <th>role</th>
+					    <th>Action</th>
+					    </tr>
+    			</thead>
+    			<th:block th:each = "user : ${userList}">
+    			
+    				<tr>
+	    				<td th:text = "${user.id}">No</td>
+	    				<td th:text = "${user.name}">Name</td>
+	    				<td th:text = "${user.email}">Email</td>
+	    				<td th:text = "${user.phone}">Phone</td>
+	    				<td th:text = "${user.address}">Address</td>
+	    				<td th:text = "${user.role}">Role</td>
+	    				<td>
+						<a th:href="@{'/admin/userEdit/' + ${user.id}}" class="text-success">Edit</a>
+						<a th:href="@{'/admin/userDelete/' + ${user.id}}" class="text-danger">Delete</a>
+						
+						</td>
+    				</tr>
+				
+    				
+    			</th:block> 
+    		</table>
+    	</div>
+    </div>
+    </div>
+	
+</body>
+</html>

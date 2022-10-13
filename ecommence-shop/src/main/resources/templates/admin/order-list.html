@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+xmlns:layout ="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate = "~{admin/admin-template}">
+<head>
+	<title>Eshop | Admin | Order-List</title>
+</head>
+<body>
+	
+	<div class="card shadow mb-4" layout:fragment="content-body">
+    <div class="card-header py-3">
+    <div class="row">
+     <div class="col-6">
+    	<h3 class="m-0 font-weight-bold text-primary">Order List Table</h3>
+    	
+    </div>
+    <div class="col-4">
+    	<a th:href="@{/admin}" class="btn btn-success" layout:fragment="add-link">Back</a>
+	</div>
+	</div>
+   
+    </div>
+    <div class="card-body">
+    	<div class="table-responsive">
+    		<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+    			<thead>
+    				<tr>
+					    <th>No</th>
+					    <th>Shipping Name</th>
+					    <th>Product</th>
+					  	<th>Quantity</th>
+					    </tr>
+    			</thead>
+    			<th:block th:each = "order : ${orderList}">
+    				<tr>
+	    				<td th:text = "${order.id}">No</td>
+	    				<td th:text = "${order.order.shippingName}">shippingName</td>
+	    				<td th:text = "${order.product.name}">product_name</td>
+	    				<td th:text = "${order.quantity}">qty</td>
+	    				
+    				</tr>
+    			</th:block> 
+    		</table>
+    	</div>
+    </div>
+    </div>
+	
+</body>
+</html>

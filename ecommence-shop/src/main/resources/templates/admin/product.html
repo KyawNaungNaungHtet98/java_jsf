@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+xmlns:layout ="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{admin/admin-template}">
+<head>
+	<title>Eshop | Product</title>
+</head>
+<body>
+	<div class="card shadow mb-4" layout:fragment="content-body">
+    <div class="card-header py-3">
+    	<div class="row">
+     <div class="col-6">
+    	<h3 class="m-0 font-weight-bold text-primary">Product Table</h3>
+    	
+    </div>
+    <div class="col-6">
+    	<a th:href="@{/admin/productAdd}" class="btn btn-success" layout:fragment="add-link">Add</a>
+		<a th:href="@{/admin}" class="btn btn-success" layout:fragment="add-link">Back</a>
+	</div>	
+    </div>
+    </div>
+    <div class="card-body">
+    	<div class="table-responsive">
+    		<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+    			<thead>
+    				<tr>
+					    <th>No</th>
+					    <th>Name</th>
+					    <th>Price</th>
+					    <th>Photo</th>
+					    <th>Category</th>
+					    <th>Created_at</th>
+    					<th>Updated_at</th>
+    					<th>Action</th>
+    				</tr>
+    			</thead>
+    			<th:block th:each = "prod : ${productList}">
+    				<tr>
+	    				<td th:text = "${prod.id}">No</td>
+	    				<td th:text = "${prod.name}">Name</td>
+	    				<td th:text = "${prod.price}">Price</td>
+	    				<td>
+						<img th:src="@{${prod.photoUrl}}" alt="No Photo" width = "50" height = "50" />
+						</td>
+	    				<td th:text = "${prod.category.name}">Category</td>
+	    				<td th:text = "${prod.created_at}">Created_at</td>
+	    				<td th:text = "${prod.updated_at}">Updated_at</td>
+	    				<td>
+						<a th:href="@{'/admin/productEdit/' + ${prod.id}}" class="text-success">Edit</a>
+						|
+						<a th:href="@{'/admin/productDelete/' + ${prod.id}}" class="text-danger">Delete</a>
+						</td>
+    				</tr>
+    			</th:block>
+    		</table>
+    	</div>
+    </div>
+    </div>
+</body>
+</html>

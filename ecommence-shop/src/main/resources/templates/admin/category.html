@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+xmlns:layout ="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate = "~{admin/admin-template}">
+<head>
+	<title>Eshop | Category</title>
+</head>
+<body>
+	
+	<div class="card shadow mb-4" layout:fragment="content-body">
+    <div class="card-header py-3">
+    <div class="row">
+     <div class="col-6">
+    	<h3 class="m-0 font-weight-bold text-primary">Category Table</h3>
+    	
+    </div>
+    <div class="col-4">
+    	<a th:href="@{/admin/categoryAdd}" class="btn btn-success" layout:fragment="add-link">Add</a>
+		<a th:href="@{/admin}" class="btn btn-success" layout:fragment="add-link">Back</a>
+	</div>	
+    </div>
+   
+    </div>
+    <div class="card-body">
+    	<div class="table-responsive">
+    		<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+    			<thead>
+    				<tr>
+					    <th>No</th>
+					    <th>Name</th>
+					    <th>Created_at</th>
+					    <th>Updated_at</th>
+					    <th>Action</th>
+					    </tr>
+    			</thead>
+    			<th:block th:each = "cate : ${categoryList}">
+    				<tr>
+	    				<td th:text = "${cate.id}">No</td>
+	    				<td th:text = "${cate.name}">Name</td>
+	    				<td th:text = "${cate.created_at}">Created_at</td>
+	    				<td th:text = "${cate.updateed_at}">Updated_at</td>
+	    				<td>
+						<a th:href="@{'/admin/categoryEdit/' + ${cate.id}}" class="text-success">Edit</a>
+						</td>
+    				</tr>
+    			</th:block> 
+    		</table>
+    	</div>
+    </div>
+    </div>
+	
+</body>
+</html>
